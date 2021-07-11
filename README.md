@@ -1,4 +1,4 @@
 # anduenAR.github.io
 
-You can find the report [here](file:///Users/anduena/Desktop/Github/anduenAR.github.io/report.html)
-and the presentation [here](file:///Users/anduena/Desktop/Github/anduenAR.github.io/presentation.html#1).
+You can find the report [here](https://anduenar.github.io/report.html)
+and the presentation [here](https://anduenar.github.io/presentation.html#10).
