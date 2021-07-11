@@ -1,0 +1,87 @@
+---
+title: "Presentation Fake"
+#subtitle: "⚔<br/>with xaringan"
+author: "Anduena Rexhepi"
+institute: "University of Ulm"
+date: "2021/07/12"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+???
+
+Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sharingan_triple.svg)
+
+---
+class: center, middle
+
+# xaringan
+## this is how you pronounce the package name
+### /ʃaː.'riŋ.ɡan/
+
+---
+Slide 1
+========================================================
+
+Here you can see a plot without displaying the code that created the plot. 
+It's the usual cars plot again...
+
+```{r, echo=FALSE, fig.width =7}
+plot(cars)
+```
+---
+
+Slide 2
+========================================================
+
+```{r}
+summary(cars)
+```
+--
+```{r}
+summary(cars)[1,1]
+```
+--
+```{r}
+summary(cars)[2,1]
+```
+
+---
+Slide 3
+========================================================
+
+Now let's talk a little bit about flowers 
+```{r, echo=FALSE}
+plot(iris)
+```
+---
+Slide 4
+========================================================
+This is just a random tibble :)
+
+```{r, echo=FALSE, message = FALSE, warning=FALSE}
+library(tibble)
+library(tidyverse)
+library(dplyr)
+library(kableExtra)
+
+knitr::kable(tibble(x = 1:4, y = 1, z = x ^ 2 + y)) %>%
+   row_spec(1, background = "yellow") %>%
+   row_spec(3, background = "yellow")
+```
+
+---
+End
+========================================================
+Thank you for your attention!

@@ -1,0 +1,94 @@
+---
+title: "Fake Analysis Report"
+author: "Anduena Rexhepi"
+date: "2021-07-11"
+output: 
+  prettydoc::html_pretty:
+    theme: architect
+---
+* [Creating Dummy Text](#creating-dummy-text)
+
+* [Dealing With Formatting](#dealing-with-formatting)
+
+* [Tables](#tables)
+
+* [Plots](#plots)
+
+# Creating Dummy Text
+
+First I created some dummy text via
+
+```{r, results = "hide", message = FALSE, warning = FALSE}
+library(tidyverse)
+library(stringi)
+set.seed(123)
+stri_rand_lipsum(1)
+```
+
+# Dealing with Formatting
+
+The output from thos functions can be easily formated like so:
+
+**Lorem ipsum dolor sit amet, sollicitudin duis maecenas habitasse ultrices aenean tempus.** Volutpat id, non natoque ad, commodo suscipit sed risus, facilisis mauris aliquam, a. **Non leo leo, sapien non eu a quam.** Nunc vivamus in, `purus ultricies` ac suspendisse at. Eu quisque fames sapien consequat et nisl nunc, `viverra est mattis` mattis posuere. [Purus quisque auctor aenean sed risus mauris ante nisi](https://www.youtube.com/watch?v=dQw4w9WgXcQ). Ligula ac vitae lacinia. Magna aliquet et mi cubilia per. Hendrerit amet eu ullamcorper turpis ultrices aliquam.
+^[This is an amazing footnote containing another [Link](https://yards.albert-rapp.de)]
+
+Also, one can transform the text into lists sentence by sentence
+
+* Lorem ipsum dolor sit amet, sollicitudin duis maecenas habitasse ultrices aenean tempus.
+* Volutpat id, non natoque ad, commodo suscipit sed risus, facilisis mauris aliquam, a.
+* Non leo leo, sapien non eu a quam.
+* Nunc vivamus in, purus ultricies ac suspendisse at.
+* Eu quisque fames sapien consequat et nisl nunc, viverra est mattis mattis   posuere.
+* Purus quisque auctor aenean sed risus mauris ante nisi.
+* Ligula ac vitae lacinia. Magna aliquet et mi cubilia per.
+* Hendrerit amet eu ullamcorper turpis ultrices aliquam.
+1. Lorem ipsum dolor sit amet, sollicitudin duis maecenas habitasse ultrices aenean tempus.
+1. Volutpat id, non natoque ad, commodo suscipit sed risus, facilisis mauris aliquam, a.
+1. Non leo leo, sapien non eu a quam.
+1. Nunc vivamus in, purus ultricies ac suspendisse at.
+1. Eu quisque fames sapien consequat et nisl nunc, viverra est mattis mattis posuere.
+1. Purus quisque auctor aenean sed risus mauris ante nisi.
+1. Ligula ac vitae lacinia. Magna aliquet et mi cubilia per.
+1. Hendrerit amet eu ullamcorper turpis ultrices aliquam.To learn more, see .
+
+# Tables
+The first 10 rows and first 5 columns of `ggplot2::mpg` are displayed in this fancy table:
+```{r, fig.align = 'center', echo=FALSE, message = FALSE, warning = FALSE}
+library(ggplot2)
+library(kableExtra)
+library(knitr)
+library(dplyr)
+tib <- ggplot2::mpg
+row <- 1:10
+col <- 1:5
+tib <- tib[row, col]
+knitr::kable(tib, booktabs = "T") %>%
+  kable_styling(bootstrap_options = "striped", position = "left") %>%
+  column_spec(3, bold = "T", 
+              background = spec_color(tib$displ[1:10], end = 0.9)) %>%
+  row_spec(6,color = "white", background = "black") %>%
+  row_spec(0, bold = "F", background = "#1E90FF")
+  
+```
+
+# Plots
+Finally, I created this helpful plot. 
+```{r, results = "hide", message = FALSE, warning = FALSE, echo=FALSE}
+nycflights13::flights %>% 
+  na.omit() %>% 
+  filter(dep_delay > 0) %>% 
+  ggplot(aes(x = dep_delay)) +
+  geom_histogram() + 
+  scale_x_log10()
+```
+
+Also, I did this using the following code:
+```{r, results = "hide", message = FALSE, warning = FALSE, eval = FALSE}
+nycflights13::flights %>% 
+  na.omit() %>% 
+  filter(dep_delay > 0) %>% 
+  ggplot(aes(x = dep_delay)) +
+  geom_histogram() + 
+  scale_x_log10()
+```
+
